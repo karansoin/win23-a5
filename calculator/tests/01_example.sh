@@ -29,3 +29,22 @@ if $CALCULATOR 3 @ 2; then  # If the return code of $PROGRAM is zero (i.e. succe
   echo 'ERROR! An invalid run of the application (3 @ 2) apparently succeeded?!'
   exit 1
 fi
+
+# Test 04: Ensure division by zero produces an error
+if $CALCULATOR 1 / 0; then  # If the return code of $PROGRAM is zero (i.e. success)...
+  echo 'ERROR! An attempt to divide by zero (1 / 0) did not produce an error!'
+  exit 1
+fi
+
+# Test 05: Ensure multiplication with negative operands produces correct output
+if [[ $($CALCULATOR -2 \* 3) -ne -6 ]]; then  # If the output of the program is not -6...
+  echo 'ERROR! A valid run of the calculator (-2 * 3) failed to produce -6 as an output!'
+  exit 1
+fi
+
+# Test 06: Ensure subtraction with large operands produces correct output
+if [[ $($CALCULATOR 1000000000000000000000000000000000000000 - 999999999999999999999999999999999999999) -ne 1 ]]; then  # If the output of the program is not 1...
+  echo 'ERROR! A valid run of the calculator (1000000000000000000000000000000000000000 - 999999999999999999999999999999999999999) failed to produce 1 as an output!'
+  exit 1
+fi
+
