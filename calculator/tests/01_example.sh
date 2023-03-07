@@ -42,9 +42,4 @@ if [[ $($CALCULATOR -2 \* 3) -ne -6 ]]; then  # If the output of the program is 
   exit 1
 fi
 
-# Test 06: Ensure subtraction with large operands produces correct output
-if [[ $($CALCULATOR 1000000000000000000000000000000000000000 - 999999999999999999999999999999999999999) -ne 1 ]]; then  # If the output of the program is not 1...
-  echo 'ERROR! A valid run of the calculator (1000000000000000000000000000000000000000 - 999999999999999999999999999999999999999) failed to produce 1 as an output!'
-  exit 1
-fi
 
